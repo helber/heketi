@@ -291,6 +291,7 @@ func (v *VolumeEntry) Create(db *bolt.DB,
 	for _, cluster := range clusters {
 
 		// Check this cluster for space
+		logger.Debug("??Readonly?? DB=%v, allocator=%v, cluster=%s, v.Info.Size=%v", db, allocator, cluster, v.Info.Size)
 		brick_entries, err = v.allocBricksInCluster(db, allocator, cluster, v.Info.Size)
 
 		if err == nil {

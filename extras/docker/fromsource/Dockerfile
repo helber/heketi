@@ -9,7 +9,7 @@ LABEL description="Development build"
 ENV BUILD_HOME=/build
 ENV GOPATH=$BUILD_HOME/golang
 ENV PATH=$GOPATH/bin:$PATH
-ENV HEKETI_BRANCH="master"
+ENV HEKETI_BRANCH="readonlydb"
 
 # install dependencies, build and cleanup
 RUN mkdir $BUILD_HOME $GOPATH && \
@@ -18,7 +18,7 @@ RUN mkdir $BUILD_HOME $GOPATH && \
     dnf -q -y clean all && \
     mkdir -p $GOPATH/src/github.com/heketi && \
     cd $GOPATH/src/github.com/heketi && \
-    git clone -b $HEKETI_BRANCH https://github.com/heketi/heketi.git && \
+    git clone -b $HEKETI_BRANCH https://github.com/helber/heketi.git && \
     go get github.com/tools/godep && \
     cd $GOPATH/src/github.com/heketi/heketi && make && \
     cp heketi /usr/bin/heketi && \
